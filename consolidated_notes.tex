@@ -7,17 +7,35 @@
 % Title and author
 \title{Coupling String Distributions (Working Notes)}
 \author{Malcolm Sharpe}
-\date{}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-Abstract will go here.
+These are working notes for coupling string distributions,
+with applications to LLM comparison.
 \end{abstract}
 
 \section{Introduction}
-Introduction will appear here.
+An LLM takes a prompt and returns a response.
+It can be useful to compare two slightly-different response distributions,
+for example, to compare different quantizations of the same LLM,
+different prompts with the same LLM,
+or different sampler configurations with the same LLM and same prompt.
+
+If the responses are independently sampled, however,
+they will often be different even if the response distributions are equal.
+That creates variance when evaluating.
+Reusing a seed reduces this variance,
+but there are even better solutions available.
+
+\section{Definitions}
+
+A coupling of $X$ and $Y$ is \textit{all-prefix-optimal} if,
+for every string $a$ and length $i$, we have
+\[
+P[X_{<i} = Y_{<i} = a_{<i}] = \min \{ P[X_{<i} = a_{<i}], P[Y_{<i} = a_{<i}] \}
+\]
 
 \end{document}
